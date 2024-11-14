@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bicoder|Data Permintaan</title>
+    <title>Bicoder|Data mutasi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
@@ -88,7 +88,6 @@
             margin-left: 8px; /* Beri sedikit jarak antara teks dan badge */
             display: inline-block; /* Agar elemen tampil inline */
         }
-
     </style>  
 </head>
 
@@ -198,7 +197,7 @@
                                 </li>    
                                 <li>
                                     <a href="get-log.html">Mutasi Transaksi</a>
-                                </li>          
+                                </li>  
                             </ul>
                         </li>
                        
@@ -222,37 +221,6 @@
                                         
                             </ul>
                         </li>
-                        <li id="menu-eWo">
-                            <a href="javascript: void(0);" class="waves-effect">
-                                <i class=" ion ion-md-clipboard"></i>
-                                <span> User Order </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li>    
-                                    <a href="get-wo-user.html">Order Request</a>
-                                </li>
-                                <li>
-                                    <a href="javascript: void(0);" aria-expanded="false">Log Approved
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                    <ul class="nav-third-level nav" aria-expanded="false">
-                                        <!-- <li id="appSpv">
-                                            <a href="get-wo-app-spv.html">Approved Spv <span id="pendingCount"></span></a>
-                                        </li> -->
-                                        <li id="appAdmin">
-                                            <a href="get-wo-app-adm1.html">Approved Admin <span id="pendingCount"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="get-wo-adm-confirm.html">Sudah Di Verikasi</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>                     
-                                    <a href="Laporan-SM.html">Status</a>
-                                </li>                                                        
-                            </ul>
-                        </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -270,7 +238,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex justify-content-between align-items-center">
-                                <h4 class="page-title mb-0">Data Barang Yang Diambil</h4>
+                                <h4 class="page-title mb-0">Data Event Log</h4>
                                 <button id="customPrintButton" class="btn btn-primary waves-effect waves-light btn-sm">Print Data</button>
                             </div>
                         </div>
@@ -285,19 +253,18 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Tanggal</th>
-                                                <th>Time</th>
+                                                <!-- <th>Tanggal</th> -->
+                                                <!-- <th>Time</th> -->
                                                 <th>Departemen</th>
                                                 <th>Mesin</th>
-                                                <th>Room</th>
-                                                <th>Location</th>
-                                                <th>Priority</th>
-                                                <th>Scope</th>
-                                                <th>Description</th>
-                                                <th>Evidence</th>
+                                                <!-- <th>Remark</th> -->
+                                                <th>Part Name</th>
+                                                <!-- <th>Specification</th> -->
+                                                <th>Qty</th>
                                                 <th>Requester</th>
+                                                <th>Store keeper/Security</th>
                                                 <th>Status</th>
-                                                <!-- <th>Note</th> -->
+                                                <th>Event Log</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -331,8 +298,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form id="editForm">
+        <div class="modal-body">
+             <form id="editForm">
                 <div class="row"> <!-- Mulai grid row -->  
                     <!-- <input type="hidden" id="editId" name="id"> -->
                   <div class="col-md-6"> <!-- Kolom untuk layar desktop -->
@@ -371,94 +338,71 @@
                             </select>
                     </div>  
                     <div class="form-group">
-                        <label for="editRoom">Room</label>
-                        <input type="text" class="form-control" id="editRoom" name="room" required readonly>
-                        <div class="invalid-feedback">Room is required.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="editId">ID</label>
-                        <input type="text" class="form-control" id="editId" name="id" required readonly>
-                        <div class="invalid-feedback">Room is required.</div>
-                    </div>
+                        <label for="editRemark">Remark</label>
+                        <textarea class="form-control" id="editRemark" name="remark" rows="3" readonly></textarea>
+                    </div>               
+                    
+                </div>
+
+                <div class="col-md-6"> <!-- Kolom untuk layar desktop -->
                     <div class="form-group">
                         <label for="editRequester">Requester</label>
                         <input type="text" class="form-control" id="editRequester" name="requester" required readonly>
                         <div class="invalid-feedback">Requester is required.</div>
                     </div>
                     <div class="form-group">
-                        <label for="editLocation">Location</label>
-                        <input type="text" class="form-control" id="editLocation" name="location" required readonly>
+                        <label for="editStoreKeeper">Store Keeper/Security</label>
+                        <input type="text" class="form-control" id="editStoreKeeper" name="security" required readonly>
                         <div class="invalid-feedback">Store Keeper/Security is required.</div>
                     </div>
-                </div>
-
-                  <div class="col-md-6"> <!-- Kolom untuk layar desktop -->
-                    
-                    
-                    <div class="form-group">
-                    <label for="editPriority">Priority</label>
-                    <select class="form-control" id="editPriority" name="priority" required disabled >
-                        <option value="" disabled selected>Select Priority</option>
-                        <option value="High (&lt;1 Week)/Safety">High(&lt;1 Week)/Safety</option>
-                        <option value="Medium (&gt;2 Week &lt;1 Month)">Medium(&gt;2 Week &lt;1 Month)</option>
-                        <option value="Low (&gt;1 Month)">Low(&gt;1 Month)</option>
-                    </select>
-                    <div class="invalid-feedback">Priority is required.</div>
-                </div>            
-                <div class="form-group">
-                    <label for="editScope">Scope</label>
-                    <select class="form-control" id="editScope" name="scope" required disabled>
-                        <option value="" disabled selected>Select Scope</option>
-                        <option value="SuCu">SuCu</option>
-                        <option value="Preventive Maintenance (PM)">Preventive Maintenance (PM)</option>
-                        <option value="Corrective Maintenance (CM)">Corrective Maintenance (CM)</option>
-                        <option value="Penggantian Part">Penggantian Part</option>
-                        <option value="Modifikasi">Modifikasi</option>
-                        <option value="Pembelian Part">Pembelian Part</option>
-                        <option value="Heating Up">Heating Up</option>
-                        <option value="Building dan Utility">Building dan Utility</option>
-                    </select>
-                    <div class="invalid-feedback">Priority is required.</div>
-                </div>
-                <div class="form-group">
-                    <label for="editDescription">Description</label>
-                    <textarea class="form-control" id="editDescription" name="description" rows="3" readonly></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="editEvidence">Evidence (Image, Video, PDF, DOC, etc.)</label>
-                    <input class="form-control" type="file" name="evidence" id="editEvidence" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.mp4,.avi" readonly>
-                    <div class="invalid-feedback">Please upload a valid file.</div>
-                </div>
                     <div class="form-group">
                         <label for="editStatus">Status</label>
-                        <select class="form-control" id="editStatus" name="status_adm" required>
-                            <option value="Review Admin">Review Admin</option>
+                        <select class="form-control" id="editStatus" name="status" required disabled>
+                            <option value="Pending">Pending</option>
                             <option value="Confirm">Confirm</option>
                             <option value="Cancel">Cancel</option>
                         </select>
                     </div> 
                     <div class="form-group">
                         <label for="editNote">Note</label>
-                        <textarea class="form-control" id="editNote" name="note" rows="1"></textarea>
-                        <!-- <input type="text" class="form-control" id="editNote" name="note"> -->
+                        <textarea class="form-control" id="editNote" name="note" rows="1" readonly></textarea>
+                        <!-- <input type="text" class="form-control" id="editNote" name="note" readonly> -->
                     </div>
                     <div class="form-group">
                         <label for="editLog">Event Log</label>
-                        <textarea class="form-control" id="editLog" name="log" rows="3" readonly></textarea>
+                        <textarea class="form-control" id="editLog" name="editLog" rows="3" readonly></textarea>
+                        <!-- <input type="text area" class="form-control" id="editLog" name="log" readonly> -->
                     </div>
-                    
+                    <!-- <div class="col-12 text-right">
+                        <button type="submit" id="saveChanges" class="btn btn-primary">Save Changes</button>
+                    </div> -->
+                 </div>
                   </div>
+                  <div id="ItemsContainer">
+                    <div class="item-row row">
+                        <div class="col-md-1">
+                            <label for="editQty">ID</label>
+                            <input type="number" class="form-control" id="editId" name="id" required readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="editPartName">Select Part Name</label>
+                            <select class="form-control" id="editPartName" name="part_name" required disabled>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="editSpecification">Specification</label>
+                            <input type="text" class="form-control" id="editSpecification" name="specification" required readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="editQty">Stock Available</label>
+                            <input type="text" class="form-control" id="editStock" name="stock" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="editQty">Qty</label>
+                            <input type="number" class="form-control" id="editQty" name="qty" required readonly>
+                        </div>
+                    </div>
                 </div>
-                  
-                <div class="form-group mt-4 text-right">
-                    <button type="button" id="addFieldBtn" class="btn btn-success">Internal Eksekusi</button>
-                    <button type="submit" id="submitForm" class="btn btn-primary">Submit</button>
-                </div>
-                <!-- <div class="form-group mt-4 text-right">
-                    <button type="submit" id="submitForm" class="btn btn-primary">Submit</button>
-                </div> -->
-                
                 </form>
             </div>
         </div>
@@ -529,6 +473,40 @@
             // Alihkan ke halaman login
             window.location.href = 'index.html';
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=readPending';
+
+    // Fetch data dari URL
+    fetch(scriptURL)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const pendingCount = data.data.length; // Hitung jumlah total data
+                updateMenuWithPendingCount(pendingCount); // Panggil fungsi untuk memperbarui menu
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+
+// Fungsi untuk memperbarui menu dengan jumlah pending
+function updateMenuWithPendingCount(pendingCount) {
+    const pendingCountSpan = document.getElementById('pendingCount'); // Ambil elemen dengan id pendingCount
+    if (pendingCountSpan) {
+        if (pendingCount > 0) {
+            pendingCountSpan.textContent = pendingCount; // Hanya tampilkan angka, tanpa tanda kurung
+            pendingCountSpan.classList.add('badge-notification'); // Tambahkan kelas badge-notification untuk gaya
+        } else {
+            pendingCountSpan.textContent = ''; // Kosongkan jika tidak ada pending
+            pendingCountSpan.classList.remove('badge-notification'); // Hapus kelas jika tidak ada data
+        }
+    }
+}
+
     </script>
 
 <script>
@@ -543,18 +521,13 @@
     if (userRole !== 'user') {
         if (addButton) addButton.style.display = 'none';
     }
+
     if (userRole !== 'user') {
         const menuGetBarang = document.getElementById('menu-get-barang');
         if (menuGetBarang) {
             menuGetBarang.style.display = 'none';
         }
-    if (userRole !== 'user') {
-        const menuGetBarang = document.getElementById('get-wo-user.html');
-        if (menuGetWoUser) {
-            menuGetWoUser.style.display = 'none';
-        }
     } 
-}
 
     // Sembunyikan menu berdasarkan role
     if (userRole !== 'admin' && userRole !== 'superadmin') {
@@ -588,67 +561,6 @@
 
 
 <script>
-
-document.addEventListener('DOMContentLoaded', function() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=readPending';
-
-    // Fetch data dari URL
-    fetch(scriptURL)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                const pendingCount = data.data.length; // Hitung jumlah total data
-                updateMenuWithPendingCount(pendingCount); // Panggil fungsi untuk memperbarui menu
-            } else {
-                console.error('Error:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-});
-
-// Fungsi untuk memperbarui menu dengan jumlah pending
-function updateMenuWithPendingCount(pendingCount) {
-    const pendingCountSpan = document.getElementById('pendingCount'); // Ambil elemen dengan id pendingCount
-    if (pendingCountSpan) {
-        if (pendingCount > 0) {
-            pendingCountSpan.textContent = pendingCount; // Hanya tampilkan angka, tanpa tanda kurung
-            pendingCountSpan.classList.add('badge-notification'); // Tambahkan kelas badge-notification untuk gaya
-        } else {
-            pendingCountSpan.textContent = ''; // Kosongkan jika tidak ada pending
-            pendingCountSpan.classList.remove('badge-notification'); // Hapus kelas jika tidak ada data
-        }
-    }
-}
-
-const userRole = sessionStorage.getItem('role');
-// Menyembunyikan atau menampilkan menu berdasarkan role
-if (userRole === 'admin') {
-    // Menampilkan menu admin, menyembunyikan menu spv
-    const menuAppAdmin = document.getElementById('appAdmin');
-    const menuAppSpv = document.getElementById('appSpv');
-    
-    if (menuAppAdmin) {
-        menuAppAdmin.style.display = 'block'; // Atur sesuai dengan tampilan yang diinginkan
-    }
-    if (menuAppSpv) {
-        menuAppSpv.style.display = 'none';
-    }
-} else {
-    // Menampilkan menu spv, menyembunyikan menu admin
-    const menuAppSpv = document.getElementById('appSpv');
-    const menuAppAdmin = document.getElementById('appAdmin');
-    
-    if (menuAppSpv) {
-        menuAppSpv.style.display = 'block';
-    }
-    if (menuAppAdmin) {
-        menuAppAdmin.style.display = 'none';
-    }
-}
-
-
  function formatDate(isoString) {
         const date = new Date(isoString);
         return date.toLocaleDateString('id-ID'); // Format tanggal sesuai dengan lokal Indonesia
@@ -661,9 +573,9 @@ if (userRole === 'admin') {
 
 
 
-             // read data
-             document.addEventListener('DOMContentLoaded', function() {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=read';
+            // read data
+            document.addEventListener('DOMContentLoaded', function() {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=read';
             const loadingSpinner = document.getElementById('loadingSpinner');
 
             // Menampilkan spinner
@@ -684,50 +596,22 @@ if (userRole === 'admin') {
                         usersTableBody.innerHTML = '';
 
                         rows.forEach(row => {
-                            let statusToDisplay;
-                    
-                        // Tentukan status berdasarkan role
-                        if (userRole === 'supervisor') {
-                            statusToDisplay = row.status_spv;
-                        } else if (userRole === 'admin') {
-                            statusToDisplay = row.status_adm;
-                        } else if (userRole === 'user') {
-                            statusToDisplay = row.status_user;
-                        } else {
-                            statusToDisplay = row.status;
-                        }
-
-                        // Skip baris jika status untuk admin atau role lainnya kosong
-                        if (userRole === 'admin' && !statusToDisplay) {
-                            return;
-                        }
-                        if (!statusToDisplay || statusToDisplay === 'Confirm') {
-                        return; // Lewati data ini dan lanjutkan ke iterasi berikutnya
-                    }
-
-
                             const tableRow = usersTableBody.insertRow();
                             tableRow.insertCell(0).textContent = row.id || '';
-                            tableRow.insertCell(1).textContent = formatDate(row.tanggal) || '';
-                            tableRow.insertCell(2).textContent = formatTime(row.waktu) || '';
-                            tableRow.insertCell(3).textContent = row.departemen || '';
-                            tableRow.insertCell(4).textContent = row.mesin || '';
-                            tableRow.insertCell(5).textContent = row.room || '';
-                            tableRow.insertCell(6).textContent = row.location || '';
-                            tableRow.insertCell(7).textContent = row.priority || '';
-                            tableRow.insertCell(8).textContent = row.scope || '';
-                            tableRow.insertCell(9).textContent = row.description || '';
-                            tableRow.insertCell(10).textContent = row.evidence || '';
-                            tableRow.insertCell(11).textContent = row.requester || '';
-         const statusCell = tableRow.insertCell(12);statusCell.textContent = row.status_user || '';
-
+                            // tableRow.insertCell(1).textContent = formatDate(row.tanggal) || '';
+                            // tableRow.insertCell(2).textContent = formatTime(row.waktu) || '';
+                            tableRow.insertCell(1).textContent = row.departemen || '';
+                            tableRow.insertCell(2).textContent = row.mesin || '';
+                            // tableRow.insertCell(5).textContent = row.remark || '';
+                            tableRow.insertCell(3).textContent = row.part_name || '';
+                            // tableRow.insertCell(7).textContent = row.specification || '';
+                            tableRow.insertCell(4).textContent = row.qty || 0;
+                            tableRow.insertCell(5).textContent = row.requester || '';
+                            tableRow.insertCell(6).textContent = row.security || '';
+         const statusCell = tableRow.insertCell(7);statusCell.textContent = row.status || '';
                             // Jika status "Pending", berikan warna merah
-                            if (row.status === 'Review Spv') {
+                            if (row.status === 'Pending') {
                                 statusCell.style.color = 'orange'; // Memberikan warna teks merah
-                                statusCell.style.fontWeight = 'bold'; // Opsi tambahan untuk mempertegas
-                                statusCell.style.textShadow = '1px black'; // Efek stroke
-                            } else if (row.status === 'Review Admin') {
-                                statusCell.style.color = 'purple'; // Memberikan warna teks hijau
                                 statusCell.style.fontWeight = 'bold'; // Opsi tambahan untuk mempertegas
                                 statusCell.style.textShadow = '1px black'; // Efek stroke
                             } else if (row.status === 'Confirm') {
@@ -740,87 +624,91 @@ if (userRole === 'admin') {
                                 statusCell.style.textShadow = '1px black'; // Efek stroke
                             }
 
-                            // Tambahkan kolom Edit dan Delete
-                            const actionCell = tableRow.insertCell(13);
-                            actionCell.innerHTML = `
-                            <button class="btn btn-success btn-sm edit-btn" data-id="${row.id}" style="${userRole !== 'admin'&& userRole !== 'superadmin' && userRole !== 'supervisor' ? 'display: none;' : ''}">Detail</button>           
-                        `;               
-                    });
+                            // tableRow.insertCell(8).textContent = row.log || '';
+                            // Mengganti penggunaan \n dengan <br> untuk menampilkan log dengan baris baru
+                            tableRow.insertCell(8).innerHTML = row.log ? row.log.replace(/\n/g, '<br>') : '';
 
+
+                            // Tambahkan kolom Edit dan Delete
+                            const actionCell = tableRow.insertCell(9);
+                            actionCell.innerHTML = `
+                            <button class="btn btn-success btn-sm edit-btn" data-id="${row.id}" style="${userRole !== 'admin' && userRole !== 'superadmin' ? 'display: none;' : ''}">Detail</button>           
+                        `;            
+                    });
+         
                 // Initialize or reinitialize DataTable
                 if ($.fn.DataTable.isDataTable('#userTable')) {
                                 $('#userTable').DataTable().destroy(); // Hancurkan instance DataTable yang ada
                             }
                             const show_username = sessionStorage.getItem('username'); 
                             const currentDateTime = new Date().toLocaleString();
-                             // Inisialisasi DataTable
-                        $('#userTable').DataTable({
-                            responsive: true,
-                            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                            dom: '<"row"<"col-sm-6"l><"col-sm-6"f>>rtip', // Show entries di kiri dan search di kanan
-                            buttons: [
-                                {
-                                    extend: 'print',
-                                    exportOptions: {
-                                        modifier: {
-                                            page: 'current'  // Hanya mencetak data yang terlihat di halaman saat ini
+                            $('#userTable').DataTable({
+                                responsive: true,
+                                lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                                dom: '<"row"<"col-sm-6"l><"col-sm-6"f>>rtip', // Show entries di kiri dan search di kanan
+                                buttons: [
+                                    {
+                                        extend: 'print',
+                                        exportOptions: {
+                                            modifier: {
+                                                page: 'current'  // Hanya mencetak data yang terlihat di halaman saat ini
+                                            },
+                                            columns: ':visible'
                                         },
-                                        columns: ':visible'
-                                    },
-                                    title: '',  // Ini judul default dari DataTables
-                                    autoPrint: false,
-                                    customize: function (win) {
-                                        // Modifikasi tampilan sebelum dicetak
-                                        $(win.document.body)
-                                            .css('font-size', '10pt')  // Sesuaikan ukuran font
-                                            .prepend(  // Tambahkan elemen header di awal body
-                                            `<div style="width: 100%; margin-bottom: 20px; position: relative;">
-                                    <div style="float: left; font-size: 12px;">Printed By: ${show_username}</div>
-                                    <div style="float: right; font-size: 12px;">Date and Time: ${currentDateTime}</div>
-                                    <div style="clear: both; text-align: center;">
-                                        <h1>Bicoder Developer</h1>
-                                        <h3>Sistem E-Part</h3>
-                                    </div>
-                                    </div>`
+                                        title: '',  // Ini judul default dari DataTables
+                                        autoPrint: false,
+                                        customize: function (win) {
+                                            // Modifikasi tampilan sebelum dicetak
+                                            $(win.document.body)
+                                                .css('font-size', '10pt')  // Sesuaikan ukuran font
+                                                .prepend(  // Tambahkan elemen header di awal body
+                                                `<div style="width: 100%; margin-bottom: 20px; position: relative;">
+                                                <div style="float: left; font-size: 12px;">Printed By: ${show_username}</div>
+                                                <div style="float: right; font-size: 12px;">Date and Time: ${currentDateTime}</div>
+                                                <div style="clear: both; text-align: center;">
+                                                    <h1>Bicoder Developer</h1>
+                                                    <h3>Sistem E-Part</h3>
+                                                </div>
+                                                </div>`
+                                                );
+                                            // Buat agar tabel lebih rapi saat pratinjau cetak
+                                            $(win.document.body).find('table')
+                                                .addClass('display')
+                                                .css('font-size', 'inherit');
+
+                                            // Tambahkan tombol Print di dalam pratinjau
+                                            $(win.document.body).append(
+                                                '<button id="customPrintButton" style="margin: 20px; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Print</button>'
                                             );
 
-                                        // Buat agar tabel lebih rapi saat pratinjau cetak
-                                        $(win.document.body).find('table')
-                                            .addClass('display')
-                                            .css('font-size', 'inherit');
-
-                                        // Tambahkan tombol Print di dalam pratinjau
-                                        $(win.document.body).append(
-                                            '<button id="customPrintButton" style="margin: 20px; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Print</button>'
-                                        );
-
-                                        // Event listener untuk tombol Print kustom di dalam pratinjau
-                                        $(win.document).on('click', '#customPrintButton', function() {
-                                            win.print();  // Memanggil dialog cetak
-                                        });
-                                         // CSS untuk menyembunyikan elemen saat mencetak
-                                            const style = '<style>@media print { #customPrintButton { display: none !important; } }</style>';
+                                            // Event listener untuk tombol Print kustom di dalam pratinjau
+                                            $(win.document).on('click', '#customPrintButton', function() {
+                                                win.print();  // Memanggil dialog cetak
+                                            });
+                                              // CSS untuk menyembunyikan elemen saat mencetak
+                                              const style = '<style>@media print { #customPrintButton { display: none !important; } }</style>';
                                             $(win.document.head).append(style);
-                                    },
-                                }
-                            ],
-                            columnDefs: [
-                                {
-                                    targets: 11,
-                                    visible: userRole === 'admin' || userRole === 'superadmin' || userRole === 'supervisor',
-                                    searchable: false
-                                }
-                            ]
-                        });
-                                  // Event listener untuk tombol print
-                                  document.getElementById('customPrintButton').addEventListener('click', function() {
+                                        },
+                                    }
+                                ],
+                                columnDefs: [
+                                    {
+                                        targets: 9,
+                                        visible: userRole === 'admin' || userRole === 'superadmin',
+                                        searchable: false
+                                    }
+                                ]
+                            });
+                                                    // Event listener untuk tombol print
+                                        document.getElementById('customPrintButton').addEventListener('click', function() {
                                             $('#userTable').DataTable().button('.buttons-print').trigger();
                                         });
-                    if (userRole !== 'admin' && userRole !== 'superadmin' && userRole !== 'supervisor') {
+                            // Sembunyikan kolom Actions jika user bukan admin
+                    if (userRole !== 'admin' && userRole !== 'superadmin') {
                         // Menggunakan setTimeout untuk menunggu DataTable selesai diinisialisasi
                         setTimeout(() => {
                             const table = document.getElementById('userTable');
-                            const actionsColumnIndex = 11; // Indeks kolom Actions (0-based)
+                            const actionsColumnIndex = 9; // Indeks kolom Actions (0-based)
                             // Sembunyikan header kolom
                             table.querySelector('thead tr').children[actionsColumnIndex].style.display = 'none';
                             // Sembunyikan semua cell di kolom Actions
@@ -844,11 +732,13 @@ if (userRole === 'admin') {
             });
 
 
+
+
                 // get part name sheet barang
             document.addEventListener('DOMContentLoaded', function() {
-            const partSheetURL = 'https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=read';
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=getSpareParts';
-            const apiUrlSpecification = 'https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=getSpecification';
+            const partSheetURL = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=read';
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=getSpareParts';
+            const apiUrlSpecification = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=getSpecification';
 
             let partData = [];
 
@@ -927,7 +817,7 @@ if (userRole === 'admin') {
             });
 
           
-            function formatDateForInput(isoString) {
+    function formatDateForInput(isoString) {
     const date = new Date(isoString);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Bulan mulai dari 0
@@ -946,7 +836,7 @@ if (userRole === 'admin') {
                 const userId = $(this).data('id');
 
                 // Ambil data item berdasarkan ID
-                $.get(`https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=getItemById&id=${userId}`, function(data) {
+                $.get(`https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=getItemById&id=${userId}`, function(data) {
 
                     if (data.status === 'success') {
                         const user = data.data;
@@ -956,20 +846,30 @@ if (userRole === 'admin') {
                             $('#editWaktu').val(formatTimeForInput(user.waktu));
                             $('#editDepartemen').val(user.departemen);
                             $('#editMesin').val(user.mesin).trigger('change');
-                            $('#editRoom').val(user.room);
+                            $('#editRemark').val(user.remark);
 
+                            $('#editPartName').val(user.part_name).attr('data-old-value',user.part_name).trigger('change');
+                            $('#editSpecification').val(user.specification);
+                            $('#editQty').val(user.qty).attr('data-old-value',user.qty);
                             $('#editRequester').val(user.requester);
-                            $('#editLocation').val(user.location);
-                            $('#editPriority').val(user.priority);
-                            $('#editScope').val(user.scope);
-                            $('#editDescription').val(user.description);
-                            $('#editEvidence').val(user.evidence);
-                            $('#editRequester').val(user.requester);
-                            $('#editStatus').val(user.status_adm).attr('data-old-value',user.status_adm);
+                            $('#editStoreKeeper').val(user.security);
+                            $('#editStatus').val(user.status).attr('data-old-value',user.status);
                             $('#editNote').val(user.note).attr('data-old-value',user.note);
                             $('#editLog').val(user.log);
                             // Ambil data stock berdasarkan part_name
-                    
+                    if (user.part_name) {
+                        $.get(apiUrlSpecification, { partName: user.part_name }, function(response) {
+                            if (response.partName === user.part_name) {
+                                $('#editStock').val(response.stock || 0);  // Tampilkan stock
+                            } else {
+                                console.error('Part name mismatch or specification data missing');
+                            }
+                        }).fail(function(jqXHR, textStatus, errorThrown) {
+                            console.error('Request failed:', textStatus, errorThrown);
+                        });
+                    } else {
+                        $('#editStock').val(0);  // Default ke 0 jika part_name kosong
+                    }
 
                             $('#editModal').modal('show');
                         // Inisialisasi Select2 pada dropdown jika belum diinisialisasi
@@ -1034,151 +934,88 @@ if (userRole === 'admin') {
                     }
                 });
 
-                $(document).ready(function() {
-    // Event listener untuk menambahkan form group baru ketika tombol #addFieldBtn diklik
-    $('#addFieldBtn').on('click', function(e) {
-        e.preventDefault();
-        const saveChanges = document.querySelector('#addFieldBtn');
-        
-        saveChanges.disabled = true;
-        saveChanges.textContent = 'Loading...';
+                // Form submission untuk modal edit
+            $('#editForm').submit(function(e) {
+                e.preventDefault();
+                var saveChanges = document.querySelector('#saveChanges');
 
-        // Cek jika elemen dropdown executor sudah ada
-        if (!document.getElementById('additionalDataField')) {
-            const additionalDataField = document.createElement('div');
-            additionalDataField.id = 'additionalDataField';
-            additionalDataField.className = 'form-group mt-4';
-            
-            additionalDataField.innerHTML = `
-                <label for="executor" style="display: block; text-align: left">Pilih Eksekutor</label>
-                <select class="form-control" id="executor" name="executor" required>
-                    <option value="" disabled selected>Pilih Eksekutor</option>
-                </select>
-                <div class="invalid-feedback">Eksekutor is required.</div>
-            `;
-            $(additionalDataField).insertBefore('#addFieldBtn');
+                        saveChanges.disabled = true;
+                        saveChanges.textContent = 'Loading...';
 
-            // Tampilkan tombol submit
-            document.getElementById('submitForm').style.display = 'inline-block';
+                const adminName = sessionStorage.getItem('username');
+                const currentDate = new Date().toLocaleString();
+                let changedFields = [];
 
-            // Panggil API untuk mendapatkan data executor
-            const apiExecutor = 'https://script.google.com/macros/s/AKfycbwuAGfMOV0Qit84uH_tglWDckzRfQG6Ovm3os9I2A_QhVdkeBMiy93LjfNf5ICe9kvUmQ/exec?action=read';
-            fetch(apiExecutor)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success' && Array.isArray(data.data)) {
-                        const executors = data.data.filter(user => user.role === 'executor');
-                        const executorDropdown = document.getElementById('executor');
+                // Get current values
+                const currentPartName = $('#editPartName').val();
+                const currentQty = $('#editQty').val();
+                const currentStatus = $('#editStatus').val();
+                const currentNote = $('#editNote').val();
 
-                        executors.forEach(user => {
-                            const option = document.createElement('option');
-                            option.value = user.username;
-                            option.textContent = user.username;
-                            executorDropdown.appendChild(option);
+                // Get old values (could be stored in hidden fields or data attributes)
+                const oldPartName = $('#editPartName').data('old-value');
+                const oldQty = $('#editQty').data('old-value');
+                const oldStatus = $('#editStatus').data('old-value');
+                const oldNote = $('#editNote').data('old-value');
+
+                // Compare old and new values to see what was changed
+                if (currentPartName !== oldPartName) {
+                    changedFields.push(`Part Name: ${oldPartName} -> ${currentPartName}`);
+                }
+                if (currentQty !== oldQty) {
+                    changedFields.push(`Qty: ${oldQty} -> ${currentQty}`);
+                }
+                if (currentStatus !== oldStatus) {
+                    changedFields.push(`Status: ${oldStatus} -> ${currentStatus}`);
+                }
+                if (currentNote !== oldNote) {
+                    changedFields.push(`Note: ${oldNote} -> ${currentNote}`);
+                }
+
+                // Log activity with changes
+                if (adminName) {
+                    const existingLog = $('#editLog').val();
+                    const newLogEntry = `${adminName}, ${currentDate},ubah: ${changedFields.join(', ')}`;
+                    const updatedLog = existingLog ? `${existingLog} || ${newLogEntry}` : newLogEntry;
+                    $('#editLog').val(updatedLog);
+                }
+
+
+                const formData = $(this).serialize();
+
+                $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=update',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            title: 'Updated!',
+                            text: 'Item has been updated.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $('#editModal').modal('hide');
+                                location.reload(); // Refresh page after user confirms
+                            }
                         });
                     } else {
-                        console.warn('Respons API tidak valid:', data);
+                        Swal.fire('Error!', response.message, 'error');
                     }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Request failed:', textStatus, errorThrown);
+                    Swal.fire('Error!', 'An error occurred while updating the item.', 'error');
+                }
                 })
-                .catch(error => {
-                    console.error('Gagal mengambil data:', error);
+                .always(() => {
+                            // Re-enable the saveChanges button and reset text
+                            saveChanges.disabled = false;
+                            saveChanges.textContent = 'Save Changes';
+                        });
                 });
-        }
-
-        // Reset tombol setelah menambahkan form group
-        saveChanges.disabled = false;
-        saveChanges.textContent = 'Internal Eksekusi';
-    });
-
-             // Form submission untuk modal edit
-$('#editForm').submit(function(e) {
-    console.log('Submit form triggered');
-    e.preventDefault();
-    var saveChanges = document.querySelector('#submitForm');
-
-    saveChanges.disabled = true;
-    saveChanges.textContent = 'Loading...';
-
-    const adminName = sessionStorage.getItem('username');
-    const currentDate = new Date().toLocaleString();
-    let changedFields = [];
-
-    let selectedExecutor = $('#executor').val();
-    console.log('Selected Executor: ', selectedExecutor);  // Log nilai executor
-    if (Array.isArray(selectedExecutor)) {
-        selectedExecutor = selectedExecutor[0]; // Ambil nilai pertama jika ada lebih dari satu
-    }
-
-    const currentStatus = $('#editStatus').val();
-    const currentNote = $('#editNote').val();
-
-    const oldStatus = $('#editStatus').data('old-value');
-    const oldNote = $('#editNote').data('old-value');
-
-    if (currentNote !== oldNote) {
-        changedFields.push(`Note: ${oldNote} -> ${currentNote}`);
-    }
-    if (currentStatus !== oldStatus) {
-        changedFields.push(`Status: ${oldStatus} -> ${currentStatus}`);
-    }
-    // Cek hanya selectedExecutor tanpa oldExecutor
-    if (selectedExecutor) {
-        changedFields.push(`Executor: -> ${selectedExecutor}`); // Jika sebelumnya tidak ada executor
-    }
-
-    if (adminName) {
-        const existingLog = $('#editLog').val();
-        const newLogEntry = `${adminName}, ${currentDate}, Merubah:\n${changedFields.join(', ')}`;
-        
-        // Tambahkan entri log baru
-        const updatedLog = existingLog ? `${existingLog}\n${newLogEntry}` : newLogEntry;
-        $('#editLog').val(updatedLog);
-    }
-
-    // Serialize form data
-    let formData = $(this).serialize();
-    console.log('Form data:', formData);
-
-    // Append selectedExecutor to formData manually
-    formData += `&executor=${encodeURIComponent(selectedExecutor)}`;
-
-    console.log('Form data:', formData);
-
-    $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbyxL1T4KZVO8ZRlyEOn406jvfPOz0DY3YmGKqeHdJmb1slvuJWsVzqTmQ_j7phrrsfM/exec?action=updateAdm',
-        type: 'POST',
-        data: formData,
-        timeout: 60000, // 60 detik
-        success: function(response) {
-            if (response.status === 'success') {
-                Swal.fire({
-                    title: 'Updated!',
-                    text: 'Item has been updated.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('#editModal').modal('hide');
-                        location.reload(); // Refresh page after user confirms
-                    }
-                });
-            } else {
-                Swal.fire('Error!', response.message, 'error');
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Request failed:', textStatus, errorThrown);
-            Swal.fire('Error!', 'An error occurred while updating the item.', 'error');
-        }
-    })
-    .always(() => {
-        // Re-enable the saveChanges button and reset text
-        saveChanges.disabled = false;
-        saveChanges.textContent = 'Lanjut Admin';
-    });
-});
-});
-});
+            });
 
 </script>
 

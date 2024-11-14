@@ -164,15 +164,25 @@
                                 <span> Data Users </span>
                             </a>
                         </li>
-                        
-                        
-                        <li id="menu-get-barang">
-                            <a href="get-wo-user.html">
-                                <i class="ion ion-ios-basket"></i>
-                                <span> Order Request </span>
+                        <li>
+                            <a href="data-part.html">
+                                <i class="ion ion-ios-construct"></i>
+                                <span> Data Parts </span>
                             </a>
                         </li>
-                        <!-- <li id="menu-barang">
+                        <li id="menu-add-stock">
+                            <a href="add-stock.html">
+                                <i class="ion ion-md-cube"></i>
+                                <span> Penambahan Stock </span>
+                            </a>
+                        </li>
+                        <li id="menu-get-barang">
+                            <a href="get-barang-user.html">
+                                <i class="ion ion-ios-basket"></i>
+                                <span> Permintaan Barang </span>
+                            </a>
+                        </li>
+                        <li id="menu-barang">
                             <a href="javascript: void(0);" class="waves-effect">
                                 <i class="ion ion-ios-basket"></i>
                                 <span>Pengambilan Barang</span>
@@ -189,7 +199,7 @@
                                     <a href="get-log.html">Mutasi Transaksi</a>
                                 </li>           
                             </ul>
-                        </li> -->
+                        </li>
                        
 
                         <li id="menu-report">
@@ -221,7 +231,7 @@
                                 <li>
                                     <a href="get-wo-user.html">Order Request</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a href="javascript: void(0);" aria-expanded="false">Log Approved
                                             <span class="menu-arrow"></span>
                                         </a>
@@ -233,7 +243,7 @@
                                             <a href="get-wo-spv-confirm.html">Sudah Di Verikasi</a>
                                         </li>
                                     </ul>
-                                </li> -->
+                                </li>
                                 <li>                     
                                     <a href="Laporan-SM.html">Status</a>
                                 </li>                                                        
@@ -393,18 +403,43 @@
                                     <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                                 </div>
             
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="evidence">Evidence (Image, Video, PDF, DOC, etc.)</label>
                                     <input class="form-control" type="file" name="evidence" id="evidence" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.mp4,.avi">
                                     <div class="invalid-feedback">Please upload a valid file.</div>
-                                </div>
-                                                          
+                                </div> -->
+                                <!-- <div id="itemsContainer">
+                                    <div class="item-row row">
+                                        <div class="col-md-4">
+                                            <label for="partName">Part Name</label>
+                                            <select class="form-control select3 partName" name="part_name" required>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="specification">Specification</label>
+                                            <input type="text" class="form-control specification" name="specification" required readonly>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="qty">Stock Available</label>
+                                            <input type="text" class="form-control stock" name="stock" readonly>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="qty">Qty</label>
+                                            <input type="number" class="form-control qty" name="qty" required>
+                                        </div>                        
+                                    </div>
+                                </div> -->
+                                
                                 <div class="form-group mt-4">
                                     <label for="requester">Requester</label>
                                     <input type="text" class="form-control" id="requester" name="requester" required readonly>
                                     <div class="invalid-feedback">Requester is required.</div>
                                 </div>
-                               
+                                <!-- <div class="form-group">
+                                    <label for="storeKeeper">Store Keeper/Security</label>
+                                    <input type="text" class="form-control" id="storeKeeper" name="security" required>
+                                    <div class="invalid-feedback">Store Keeper/Security is required.</div>
+                                </div> -->
                                 <div class="col-12 text-right">
                                     <button type="submit" id="saveButton" class="btn btn-primary">Save</button>
                                 </div>
@@ -414,8 +449,6 @@
                 </div>
             </div>
             <!-- End Add Item Modal -->
-
-
 
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
@@ -549,9 +582,7 @@
                     </div>
                 </div>
             </div>
-
-
-                        <!-- Footer Start -->
+            <!-- Footer Start -->
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
@@ -718,7 +749,7 @@ function formatDate(isoString) {
 
             // read data
             document.addEventListener('DOMContentLoaded', function() {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbysy-6O5NKeQWA1fBnCpqHowgUlWus3lO_nzE5TV-21FkIwTVPV62GukCZMPSsXpuio/exec?action=read';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwNDdAdlvEDxrQ2MCnEkBXrz1EgY9Tq1_XYZzPitOE6Z1cDfQNMPgPf-J0nDM-fWVXa/exec?action=read';
             const loadingSpinner = document.getElementById('loadingSpinner');
 
             // Menampilkan spinner
@@ -887,7 +918,7 @@ function formatDate(isoString) {
 
                 // get part name sheet barang
             document.addEventListener('DOMContentLoaded', function() {
-            const partSheetURL = 'https://script.google.com/macros/s/AKfycbysy-6O5NKeQWA1fBnCpqHowgUlWus3lO_nzE5TV-21FkIwTVPV62GukCZMPSsXpuio/exec?action=read';
+            const partSheetURL = 'https://script.google.com/macros/s/AKfycbwNDdAdlvEDxrQ2MCnEkBXrz1EgY9Tq1_XYZzPitOE6Z1cDfQNMPgPf-J0nDM-fWVXa/exec?action=read';
             const apiUrl = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=getSpareParts';
             const apiUrlSpecification = 'https://script.google.com/macros/s/AKfycbypjjsM2tpbpqcGGLivgQ0mjgSkrmK8DfMfuBZ_g3YC_a7fWv8A4s8v0Z51RaqNYbXG0w/exec?action=getSpecification';
 
@@ -987,7 +1018,7 @@ function formatDate(isoString) {
                 const userId = $(this).data('id');
 
                 // Ambil data item berdasarkan ID
-                $.get(`https://script.google.com/macros/s/AKfycbysy-6O5NKeQWA1fBnCpqHowgUlWus3lO_nzE5TV-21FkIwTVPV62GukCZMPSsXpuio/exec?action=getItemById&id=${userId}`, function(data) {
+                $.get(`https://script.google.com/macros/s/AKfycbwNDdAdlvEDxrQ2MCnEkBXrz1EgY9Tq1_XYZzPitOE6Z1cDfQNMPgPf-J0nDM-fWVXa/exec?action=getItemById&id=${userId}`, function(data) {
 
                     if (data.status === 'success') {
                         const user = data.data;
@@ -1331,7 +1362,7 @@ function formatDate(isoString) {
 
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'https://script.google.com/macros/s/AKfycbysy-6O5NKeQWA1fBnCpqHowgUlWus3lO_nzE5TV-21FkIwTVPV62GukCZMPSsXpuio/exec?action=create', true);
+                    xhr.open('POST', 'https://script.google.com/macros/s/AKfycbwNDdAdlvEDxrQ2MCnEkBXrz1EgY9Tq1_XYZzPitOE6Z1cDfQNMPgPf-J0nDM-fWVXa/exec?action=create', true);
 
                     xhr.onload = function () {
                         if (xhr.status >= 200 && xhr.status < 400) {
